@@ -8,8 +8,9 @@ Tracks the commits in a [git](http://git-scm.com/) repository.
 
 * `branch`: The branch to track. This is *optional* if the resource is only
    used in `get` steps; however, it is *required* when used in a `put` step.
-   If unset, `get` steps will checkout the repository's default branch;
-   usually `master` but [could be different](https://help.github.com/articles/setting-the-default-branch/).
+   If unset, and no `branch:` parameter is passed to the resource, `get` steps will
+   checkout the repository's default branch; usually `master` but
+   [could be different](https://help.github.com/articles/setting-the-default-branch/).
 
 * `private_key`: *Optional.* Private key to use when pulling/pushing.
     Example:
@@ -291,6 +292,9 @@ correct key is provided set in `git_crypt_key`.
 * `timestamp_format`: *Optional.* When populating `.git/commit_timestamp` use this options to pass to [`git log --date`](https://git-scm.com/docs/git-log#Documentation/git-log.txt---dateltformatgt). Defaults to `iso8601`.
 
 * `describe_ref_options`: *Optional.* When populating `.git/describe_ref` use this options to call [`git describe`](https://git-scm.com/docs/git-describe). Defaults to `--always --dirty --broken`.
+
+* `branch`: *Optional* When set, overrides the source branch definition. Useful in the context of instanced pipeline flows with pipeline definitions
+per PR.
 
 #### GPG signature verification
 
